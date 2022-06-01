@@ -44,9 +44,11 @@
                 href="/"
               >Home</a>
             </li>
-            <li class="nav-item ms-lg-3">
-              <a class="nav-link text-dark" href="add-project">Add Project</a>
-            </li>
+            {{#isLogin}}
+              <li class="nav-item ms-lg-3">
+                <a class="nav-link text-dark" href="add-project">Add Project</a>
+              </li>
+            {{/isLogin}}
           </ul>
           <a class="btn btn-dark" href="contact"> Contact Me </a>
         </div>
@@ -152,32 +154,36 @@
                 <div class="card-body">
                   <h5 class="card-title"><a
                       class="text-decoration-none text-dark"
-                      href="detail-project"
+                      href="/project-detail/{{@index}}"
                     >
-                      {{this.project-name}}</a></h5>
+                      {{this.projectName}}
+                    </a></h5>
                   <p class="duration text-muted">Duration :
                     {{this.lengthDate}}</p>
-                  <p class="card-text">
+                  <p class="card-text description">
                     {{this.description}}
                   </p>
-                  <div>
-                    <img
-                      class="m-3"
-                      src="/public/img/nodejs-icon.svg"
-                      alt="node-js"
-                      height="30"
-                    />
-                    <img
-                      class="m-3"
-                      src="/public/img/typescript-icon.svg"
-                      alt="typeScript"
-                      height="30"
-                    />
+                  <div class="card-content mb-3">
+                    <img src="{{this.nodeJs}}" />
+                    <img src="{{this.reactJs}}" />
+                    <img src="{{this.nextJs}}" />
+                    <img src="{{this.typeScript}}" />
                   </div>
-                  <div class="d-flex">
-                    <a href="#" class="btn btn-primary w-100 me-3">Edit</a>
-                    <a href="#" class="btn btn-primary w-100">Delete</a>
-                  </div>
+
+                  {{#if this.isLogin}}
+                    <div class="d-flex">
+                      <a
+                        href="/edit-project/{{@index}}"
+                        class="btn btn-primary w-100 me-3"
+                        type="submit"
+                      >Edit</a>
+                      <a
+                        href="/delete-project/{{@index}}"
+                        class="btn btn-primary w-100"
+                        type="submit"
+                      >Delete</a>
+                    </div>
+                  {{/if}}
                 </div>
               </div>
             </div>

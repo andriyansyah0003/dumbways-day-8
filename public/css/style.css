@@ -11,6 +11,11 @@ p.text-justify {
 .bio {
   background-color: #e3e7eb;
 }
+.description {
+  max-height: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 /* @media (max-width: 768px) {
   p.text-justify {
